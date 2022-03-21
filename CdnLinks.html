@@ -11,13 +11,16 @@
 
     <!-- i have placed this links here so that i can be able to input react code directly into my html page  -->
  <!-- but it is not working..the page is displaying nothing..i dont know why  -->
+    
+    <!-- The links are fine. It's the JS code in the script that has issues -->
 
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script type="text/babel">
 
-import React from 'react';
+    <!-- Remove this import (I've done it for you) -->
+// import React from 'react';
 
 class App extends React.Component {
     constructor(props) {
@@ -30,10 +33,12 @@ class App extends React.Component {
     }
 
     changer() {
-        this.setState(state => {
-            state.num += 1;                 //i also have a problem with this js logic..it is incrementing by 2 when i console.log..whereas i have added only 1
-        })
-        console.log(this.state.num);        //increments by 2 instead of the 1 specified
+    <!-- The first argument to setState should be an object containing the new state -->
+        this.setState({
+            num: this.state.num + 1;    // This is a new object with the new state
+        },
+        console.log(this.state.num); // If you want to see the new value right after the state has been changed, use a callback function as the 2nd argument to setState. It'll be called after the state has been changed. This is a more accurate check for the new ths.state.num value
+        )        
     }
 
     render() {
